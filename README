@@ -1,0 +1,29 @@
+This tiny app should offer a contact form with spamdetection.
+It works like this:
+
+    * visitor want's to contact siteadmin
+    * visitor uses contactform
+    * visitor get's an email with a notification and verificationlink
+    * visitor has to visit that verificationlink
+    * after visiting the link the contactrequest will be sent to the siteadmin
+
+
+
+QuickInstall:
+
+    * import the urls.py
+    * setup DOPTINCF_MAIL_SUBJECT variable in your settings.py if you want a different subject
+    * setup DOPTINCF_MAIL_TO to define a recipients list (like this: DOPTINCF_MAIL_TO = ['test@example.com', 'another_test@example.com'])
+    * set DOPTINCF_MAIL_FROM. This is the from-address. (e.g. no-reply@example.com)
+
+
+
+
+
+
+NOTE: This version is currently a quick decoupling from a project. It was not tested as a decoupled app. If there are problems with this app please
+let know or pass me a patch so that I can update the sourcecode.
+
+
+http://redmine.burningsquirrel.net/projects/dj-docf
+http://github.com/MyersGer/django-doubleoptin-contactform

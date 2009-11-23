@@ -1,0 +1,21 @@
+{% comment %}
+EXAMPLE TEMPLATE
+{% endcomment %}
+
+{% block content %}
+		<form action="." method="post" id="formular">
+			<fieldset>
+		    		<legend>Contact data</legend>
+				<br/>
+			        {% for field in form %}
+					<p{% if field.errors %} class="validationerror"{% endif %}>{{ field.label_tag }}{% if field.field.required %}*{% endif %} {{ field }}</p><br/>
+				{% endfor %}
+
+	        	<p><small>* required</small></p>
+			<br/>
+	        	<p><input class="button" tabindex="4" type="submit" value="Submit" name="formmail" /></p>
+		</fieldset>
+		</form>
+	</div>
+{% endblock %}
+
