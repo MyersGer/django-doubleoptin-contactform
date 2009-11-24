@@ -15,6 +15,7 @@ QuickInstall:
     * setup DOPTINCF_MAIL_SUBJECT variable in your settings.py if you want a different subject
     * setup DOPTINCF_MAIL_TO to define a recipients list (like this: DOPTINCF_MAIL_TO = ['test@example.com', 'another_test@example.com'])
     * set DOPTINCF_MAIL_FROM. This is the from-address. (e.g. no-reply@example.com)
+    * add the app to your installed apps
 
 
 
