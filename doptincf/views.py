@@ -25,34 +25,34 @@ from doptincf.forms import ContactForm
 
 
 def contact(request):
-	if request.method == 'POST':
+    if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-			contact_request = form.save(commit=False)
+            contact_request = form.save(commit=False)
 
             #put a bit user agent information into the mail
-			contact_request.question += '\n\n- - - - - - - - - - - - - - - - - - - - - - - -\n\n' + request.META['HTTP_USER_AGENT'] 
-			contact_request.save() 
+            contact_request.question += '\n\n- - - - - - - - - - - - - - - - - - - - - - - -\n\n' + request.META['HTTP_USER_AGENT'] 
+            contact_request.save() 
             
             #build the verify link that will be submitted to the user
-			link = settings.WEB_URL+'contact/'+str(contact_request.pk)+'/verify/'
+            link = settings.WEB_URL+'contact/'+str(contact_request.pk)+'/verify/'
             
             #take subjecttext from settings.py or use a standard one
-            if settings.DOPTINCF_MAIL_SUBJECT == None
-    			subject = 'Your contact request'
-            else
+            if settings.DOPTINCF_MAIL_SUBJECT is None:
+                subject = 'Your contact request'
+            else:
                 subject = settings.DOPTINCF_MAIL_SUBJECT
+    
+                #standard messagetext of verification mail
+                message = 'To proceed your contactrequest please visit the following link \n\n' + link
+    
+                #send the mail
+                send_mail(subject, message, settings.DOPTINCF_MAIL_FROM,[contact_request.email], fail_silently=False)
+                #redirect to the successpage
+                return HttpResponseRedirect('./received/')
 
-            #standard messagetext of verification mail
-			message = 'To proceed your contactrequest please visit the following link \n\n' + link
-
-            #send the mail
-			send_mail(subject, message, settings.DOPTINCF_MAIL_FROM,[contact_request.email], fail_silently=False)
-            #redirect to the successpage
-			return HttpResponseRedirect('./received/')
-
-	    else:
-       		form = ContactForm()
+    else:
+        form = ContactForm()
    	
 	return render_to_response('contact/contact.html', {'form': form}, context_instance=RequestContext(request))
 
