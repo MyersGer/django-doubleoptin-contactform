@@ -13,10 +13,15 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
-urlpatterns = patterns(
-    (r'^$', 'aceton.contact.views.contact'),
+
+from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
+
+
+urlpatterns = patterns('',
+    (r'^$', 'doptincf.views.contact'),
     (r'^received/$', direct_to_template, {'template': 'contact/received.html'}),
-    (r'^(?P<contact_id>\d+)/verify/$', 'aceton.contact.views.verify'),
+    (r'^(?P<contact_id>\d+)/verify/$', 'doptincf.views.verify'),
     (r'^received/$', direct_to_template, {'template': 'contact/verified.html'}),
 )
 
