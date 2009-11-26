@@ -22,9 +22,8 @@ QuickInstall:
 
 
 
-NOTE: This version is currently a quick decoupling from a project. It was not tested as a decoupled app. If there are problems with this app please
-let know or pass me a patch so that I can update the sourcecode.
+NOTE: This version is currently a quick decoupling from a project. It was not tested as a decoupled app. If there are any problems with this app please let me know or pass me a patch so that I can update the sourcecode.
 
 
-http://redmine.burningsquirrel.net/projects/dj-docf
-http://github.com/MyersGer/django-doubleoptin-contactform
+Issues: http://redmine.burningsquirrel.net/projects/dj-docf
+Git repository: http://github.com/MyersGer/django-doubleoptin-contactform
