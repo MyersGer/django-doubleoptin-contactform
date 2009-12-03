@@ -37,19 +37,15 @@ def contact(request):
             #build the verify link that will be submitted to the user
             link = settings.WEB_URL+'contact/'+str(contact_request.pk)+'/verify/'
             
-            #take subjecttext from settings.py or use a standard one
-            if settings.DOPTINCF_MAIL_SUBJECT is None:
-                subject = 'Your contact request'
-            else:
-                subject = settings.DOPTINCF_MAIL_SUBJECT
-    
-                #standard messagetext of verification mail
-                message = 'To proceed your contactrequest please visit the following link \n\n' + link
-    
-                #send the mail
-                send_mail(subject, message, settings.DOPTINCF_MAIL_FROM,[contact_request.email], fail_silently=False)
-                #redirect to the successpage
-                return HttpResponseRedirect('./received/')
+            subject = settings.DOPTINCF_MAIL_SUBJECT
+
+            #standard messagetext of verification mail
+            message = 'To proceed your contactrequest please visit the following link \n\n' + link
+
+            #send the mail
+            send_mail(subject, message, settings.DOPTINCF_MAIL_FROM,[contact_request.email], fail_silently=False)
+            #redirect to the successpage
+            return HttpResponseRedirect('./received/')
 
     else:
         form = ContactForm()
