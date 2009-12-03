@@ -50,7 +50,7 @@ def contact(request):
     else:
         form = ContactForm()
    	
-	return render_to_response('contact/contact.html', {'form': form}, context_instance=RequestContext(request))
+    return render_to_response('contact/contact.html', {'form': form}, context_instance=RequestContext(request))
 
 
 def verify(request, contact_id):
